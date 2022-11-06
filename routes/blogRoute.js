@@ -1,4 +1,5 @@
 const express = require("express");
+const router = express.Router();
 const path = require("path");
 const multer = require("multer");
 const storage = multer.diskStorage({
@@ -13,14 +14,19 @@ const storage = multer.diskStorage({
 let upload = multer({ storage: storage });
 
 const {
+
   blogSubmitController,
   blogUploadPhoto,
   getBlogById,
+  getEditor,
+  getBlogs,
+  blogCommentsSubmitController,
 } = require("../controllers/blogController");
-
-const router = express.Router();
-
-router.get('/:id',getBlogById)
-router.post("/submit", blogSubmitController);
-router.post("/uploadPhoto", upload.single("file"), blogUploadPhoto);
+const isAuthorized = require("../middleware/auth");
+router.get('/all',isAuthorized,getBlogs)
+router.get("/editor",isAuthorized,getEditor)
+router.get('/:id',isAuthorized,getBlogById)
+router.post("/submit",isAuthorized, blogSubmitController);
+router.post("/commentsubmit",isAuthorized,blogCommentsSubmitController)
+router.post("/uploadPhoto",isAuthorized, upload.single("file"), blogUploadPhoto);
 module.exports = router;

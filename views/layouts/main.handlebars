@@ -1,0 +1,100 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="stylesheet" href="../../public/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+  </head>
+  <body>
+    {{!-- <nav id="navbar" class="navbar">
+      <ul class="navcontent">
+       
+       <div class="nav-brand"> 
+        <li class="navitem"><a href="/">Home</a></li>
+        <li class="menu-icon mr-2">
+       
+         <a href="#"> <i class="fa fa-bars"></i></a> 
+       
+        </li>
+        </div>
+
+       
+       <div class="nav-menu"> 
+
+       
+        <li class="navitem "> <a href="/blog/all">Blogs</a> </li>
+        <li class="navitem "> <a href="/blog/editor">Blog Editor</a> </li>
+
+        <div id="login-signup" class="nav-right">
+          <li class="navitem mr-1"><a href="/user/login">Login</a></li>
+          <li class="navitem mr-1"><a href="/user/signup">Signup</a></li>
+        </div>
+
+        <div id="logout-username" class="nav-right">
+          <li id="username" class="navitem mr-1"><a href="/user/login">Username</a></li>
+          <li id="logout" class="navitem mr-1"><a href="/user/logout">Logout</a></li>
+        </div>
+        
+        
+        </div>
+      </ul>
+    </nav> --}}
+
+  <nav class="navbar">
+      <div class="brand-title">
+        <a href="/">Home</a>
+      </div>
+
+      <div id="navlinks" class="navlinks">
+        <ul>
+          <div class="nav-left">
+            <li><a href="/blog/all">Blogs</a></li>
+            <li><a href="/blog/editor">Blog editor</a></li>
+          </div>
+          <!-- <div class="nav-right">
+            <li><a href="user/login">Login</a></li>
+            <li><a href="user/signup">Signup</a></li>
+
+          </div> -->
+          <div id="login-signup" class="nav-right">
+            <li class="navitem mr-1"><a href="/user/login">Login</a></li>
+            <li class="navitem mr-1"><a href="/user/signup">Signup</a></li>
+          </div>
+
+          <div id="logout-username" class="nav-right">
+            <li  class="navitem mr-1">
+              <a href="/user/profile" id="username">Username</a>
+            </li>
+            <li id="logout" class="navitem mr-1">
+              <a href="/user/logout">Logout</a>
+            </li>
+          </div>
+        </ul>
+      </div>
+      <div id="menuicon" class="menu-icon">
+        <a href="#">
+          <i class="fa fa-bars icon"></i>
+        </a>
+      </div>
+    </nav>
+
+  <div class="main-body">
+ {{{body}}}
+  </div>
+   
+
+
+    <footer class="footer flex">
+      <h4>Blogspot | All rights reserved  </h4>
+    </footer>
+  </body>
+  <script src="../../public/javascript/navbar.js">
+
+  </script>
+</html>

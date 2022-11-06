@@ -5,11 +5,18 @@ const blogSchema=mongoose.Schema({
         type:String,
         required:true,
     },
-    
+    title:{
+        type:String,
+        required:true,
+    },
     content:{
         type:String,
         required:true
     },
+    comments:{
+        type:Array,
+        
+    }
 },
 {
     timestamps:true

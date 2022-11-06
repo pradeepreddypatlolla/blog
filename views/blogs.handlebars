@@ -1,0 +1,25 @@
+
+
+
+<div class="ml-2 mt-2">
+  >  <a href="/"> home </a> / <a href="/blog/all">Blogs</a>
+</div>
+<h2 class="ml-3">Blogs</h2> 
+<div class="flex blog-container">
+
+{{#each blogs}}
+
+<div class= "card blog my-1 mx-1">
+<div class="blog-card-content">
+<a href="/blog/{{this._id}}">
+<h3>{{this.title}} </h3> 
+ <div>{{{this.content}}}</div>
+</a>  
+</div>
+
+<div class="card-footer">
+   {{this.email}} | {{{ this.createdAt}}}
+</div>  
+</div>
+{{/each}}
+</div>

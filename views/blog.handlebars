@@ -1,0 +1,35 @@
+<div class="ml-2 mt-2">
+  >  <a href="/"> home </a> / <a href="/blog/all">Blogs</a> / <span>{{blog.title}}</span>
+</div>
+<div class="blog-content">
+
+  <script>
+
+    let blogId = '{{blog._id}}' 
+    localStorage.setItem('blogId',blogId) 
+    alert(blogId)
+  </script>
+
+  <h2> {{blog.title}} </h2>
+
+  {{{blog.content}}}
+
+  <div>
+    Created by -
+    {{blog.email}}
+  </div>
+
+  <div>
+    <h3>Comments</h3>
+
+    {{#each blog.comments}}
+      <div> <span> {{this.comment}} </span> ~ <span>{{this.user}}</span> </div>
+    {{/each}}
+
+  </div>
+  <div>
+    <textarea name="" id="comment" cols="30" rows="2">Comment</textarea>
+    <button class="btn" id="comment-submit">Submit</button>
+  </div>
+</div>
+<script src="../public/javascript/blog.js"></script>
