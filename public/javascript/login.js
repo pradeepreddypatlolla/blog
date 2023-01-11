@@ -11,7 +11,7 @@ document.getElementById("submit").addEventListener("click",async function(e){
         },
         body: JSON.stringify({ emailId: emailId,password:password }),
       }
-    fetch("http://localhost:3000/user/login",options).
+    fetch(location.origin+"/user/login",options).
    then(res=>res.json()).
    then(res=>{
     if(res.success){
