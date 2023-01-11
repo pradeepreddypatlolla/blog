@@ -1,3 +1,24 @@
+<script >
+    const deleteBlog=async(blogId)=>{
+        
+       if(confirm("Are you sure?")){
+
+       
+        let res=await fetch("http://localhost:3000/blog/delete",{
+            method:"DELETE",
+            headers: {
+             "Content-Type": "application/json",
+    },
+    body: JSON.stringify({blogId:blogId } ),
+        })
+        res=await res.json()
+       if(res.success){
+        alert(res.message)
+        location.assign('/user/profile')
+       }
+    }
+    }
+</script>
 <div class="ml-2 mt-2">
   >  <a href="/"> Home </a> / <a href="/user/profile">Profile</a>
 </div>
@@ -7,18 +28,19 @@
 {{#each blogs}}
 
 <div class= "card blog my-1 mx-1">
-    <div class="delete-edit-icon"> <i class="fa fa-edit" id="edit"></i> <i class="fa fa-trash"></i> </div>
+    <div class="delete-edit-icon">  <a href="/blog/blog-editor/{{this._id}}">  <i class="fa fa-edit" id="edit"></i> </a>  <i class="fa fa-trash" onclick="deleteBlog('{{this._id}}')" ></i> </div>
     <div class="blog-card-content">
         <a href="/blog/{{this._id}}">
             <h3>{{this.title}} </h3> 
-            <div>{{{this.content}}}</div>
+            <img src="{{this.imgUrls.[0]}}" alt="" >
         </a>  
     </div>
 
     <div class="card-footer">
-        {{this.email}} | {{{ this.createdAt}}}
+        {{this.email}} | {{formatDate this.createdAt "lll"}}
     </div>  
 
 </div>
 {{/each}}
 </div>
+

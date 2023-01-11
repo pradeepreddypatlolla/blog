@@ -7,60 +7,19 @@ fileSelector.addEventListener("change", (event) => {
 
     newImg.src = event.target.result;
 
-    //document.getElementById("blog-editor").appendChild(newImg);
+    
 
     pasteImgAtCaret(newImg);
   });
-  //console.log("ScrollTop "+document.getElementById('blog-editor').scrollTop);
+  
   reader.readAsDataURL(event.target.files[0]);
 });
-// Submit Copy code
-// const submitSelector = document.getElementById("submit");
-// submitSelector.addEventListener("click", async () => {
-//   let blog = document.getElementById('blog-editor');
-//   console.log(blog);
-//   let blogTitle=document.getElementById('blog-title').value
-//   console.log(blogTitle);
-//   let imgs = blog.getElementsByTagName('img');
-//   for (let i = 0; i < imgs.length; i++) {
-//     let img1 = new FormData();
-    
-//     const file = dataURLtoFile(imgs[i].src, "testimg.png");
-//     img1.append("file", file);
-//     let res = await fetch("http://localhost:3000/blog/uploadPhoto", {
-//       method: "POST",
-//       body: img1,
-//     });
-   
-
-    
-//     res = await res.json();
-//     console.log(res);
-//     // console.log(res.filename);
-//     imgs[i].src = res.url;
-//     //console.log(imgs[i].src);
-//   }
-
-//   let res = await fetch("http://localhost:3000/blog/submit", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({title:blogTitle,content: blog.innerHTML} ),
-//   });
-//   res = await res.json();
-//   if(res.success){
-//     alert("Submitted successfully!")
-//     location.assign("/blog/all")
-//   }
-//   //console.log(res);
-// });
 
 // Submit 
 
-const submitSelector = document.getElementById("submit");
-submitSelector.addEventListener("click", async () => {
+const submit=async(blogId)=>{
   document.getElementById('loader').style.display='block'
+  console.log(blogId);
   let blog = document.getElementById('blog-editor');
   console.log(blog);
   let blogTitle=document.getElementById('blog-title').value
@@ -68,6 +27,9 @@ submitSelector.addEventListener("click", async () => {
   let imgs = blog.getElementsByTagName('img');
   let imgUrls=[]
   for (let i = 0; i < imgs.length; i++) {
+    
+    if(imgs[i].src.startsWith('data')){
+
     
     let res = await fetch("http://localhost:3000/blog/uploadPhoto", {
       method: "POST",
@@ -78,18 +40,23 @@ submitSelector.addEventListener("click", async () => {
 
     
     res = await res.json();
+    console.log(res);
     
     imgs[i].src = res.url;
     imgUrls.push(res.url)
     
   }
+  else{
+    imgUrls.push(imgs[i].src)
+  }
+  }
 
-  let res = await fetch("http://localhost:3000/blog/submit", {
+  let res = await fetch("http://localhost:3000/blog/update-blog", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({title:blogTitle,content: blog.innerHTML,imgUrls:imgUrls} ),
+    body: JSON.stringify({blogId:blogId ,title:blogTitle,content: blog.innerHTML,imgUrls:imgUrls} ),
   });
   res = await res.json();
   if(res.success){
@@ -97,8 +64,8 @@ submitSelector.addEventListener("click", async () => {
     document.getElementById('loader').style.display='none'
     location.assign("/blog/all")
   }
-  //console.log(res);
-});
+  console.log(res);
+}
 
 
 

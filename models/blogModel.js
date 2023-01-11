@@ -16,6 +16,9 @@ const blogSchema=mongoose.Schema({
     comments:{
         type:Array,
         
+    },
+    imgUrls:{
+        type:Array
     }
 },
 {

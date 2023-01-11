@@ -13,12 +13,14 @@
 <div class="blog-card-content">
 <a href="/blog/{{this._id}}">
 <h3>{{this.title}} </h3> 
- <div>{{{this.content}}}</div>
+
+<img src="{{this.imgUrls.[0]}}" alt="">
+ 
 </a>  
 </div>
 
 <div class="card-footer">
-   {{this.email}} | {{{ this.createdAt}}}
+   {{this.email}} | {{formatDate this.createdAt "lll"}}
 </div>  
 </div>
 {{/each}}

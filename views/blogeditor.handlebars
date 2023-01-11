@@ -1,0 +1,30 @@
+ 
+
+<div class="ml-3 mt-2">
+  >  <a href="/"> Home </a> / <a href="/user/profile">Profile</a>
+</div>
+
+<div class="blog-editor-page">
+
+  
+
+<section class="blog-section my-1 mx-auto container ">
+ <h1 class="flex">Editor</h1> 
+
+
+   <h1><input id="blog-title" class="blog-title" type="text" placeholder="Title" value="{{blog.title}}">  </h1>
+        <div id="blog-editor" id="card" class="blog-editor mx-auto" contenteditable="true" aria-placeholder="Start Typing" >{{{blog.content}}} </div>
+       
+<div class="editor-options my-1">
+<button class="btn" onclick="document.getElementById('addImg').click()">Add Image</button>
+  <input type='file' id="addImg" style="display:none">
+    <button class="btn" type="submit" id="submit" onclick="submit('{{blog._id}}')" >Submit</button>
+    
+</div>
+ 
+
+</section>  
+</div>
+<script src="../../public/javascript/blogeditor.js"></script> 
+   
+    
