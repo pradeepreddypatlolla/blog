@@ -31,7 +31,7 @@ const submit=async(blogId)=>{
     if(imgs[i].src.startsWith('data')){
 
     
-    let res = await fetch("http://localhost:3000/blog/uploadPhoto", {
+    let res = await fetch(location.origin+"/blog/uploadPhoto", {
       method: "POST",
       body: JSON.stringify({data: imgs[i].src}),
       headers:{'Content-type':'application/json'}
@@ -51,7 +51,7 @@ const submit=async(blogId)=>{
   }
   }
 
-  let res = await fetch("http://localhost:3000/blog/update-blog", {
+  let res = await fetch(location.origin+"/blog/update-blog", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

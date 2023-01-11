@@ -4,7 +4,7 @@
        if(confirm("Are you sure?")){
 
        
-        let res=await fetch("http://localhost:3000/blog/delete",{
+        let res=await fetch(location.origin+"/blog/delete",{
             method:"DELETE",
             headers: {
              "Content-Type": "application/json",

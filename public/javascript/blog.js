@@ -4,7 +4,7 @@ document.getElementById('comment-submit').addEventListener('click',async functio
     alert(comment)
     let blogId=localStorage.getItem('blogId')
    // alert(blogId)
-    let res=await fetch('http://localhost:3000/blog/commentsubmit',{
+    let res=await fetch(location.origin+'/blog/commentsubmit',{
         method:'POST',
         headers: {
             "Content-Type": "application/json",

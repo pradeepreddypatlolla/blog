@@ -7,7 +7,7 @@ document.getElementById("register").addEventListener('click',async(e)=>{
     let emailId=form.email.value
     let password=form.password.value 
     console.log(name,emailId,password)   
-    let res=await fetch('http://localhost:3000/user/register',{
+    let res=await fetch(location.origin+'/user/register',{
         method:'POST',
         headers:{
             "Content-Type":'application/json'
