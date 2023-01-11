@@ -7,7 +7,7 @@ const blogRouter=require('../routes/blogRoute')
 const userRouter=require('../routes/userRoute')
 const bodyParser = require('body-parser');
 const cookieParser=require('cookie-parser')
-
+const serverless=require('serverless-http')
 dotenv.config()
 dbconnect()
 
@@ -50,3 +50,5 @@ app.use('/user',userRouter)
 app.listen(process.env.PORT,()=>{
     console.log("Server is running at "+process.env.PORT)
 })
+
+module.exports.handlers=serverless(app)

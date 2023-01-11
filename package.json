@@ -4,9 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "netlify-lambda serve src",
-    "build": "netlify-lambda build src"
+    "dev": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
