@@ -69,7 +69,7 @@ submitSelector.addEventListener("click", async () => {
   let imgUrls=[]
   for (let i = 0; i < imgs.length; i++) {
     
-    let res = await fetch("http://localhost:3000/blog/uploadPhoto", {
+    let res = await fetch(location.origin+"/blog/uploadPhoto", {
       method: "POST",
       body: JSON.stringify({data: imgs[i].src}),
       headers:{'Content-type':'application/json'}
@@ -84,7 +84,7 @@ submitSelector.addEventListener("click", async () => {
     
   }
 
-  let res = await fetch("http://localhost:3000/blog/submit", {
+  let res = await fetch(location.origin+"/blog/submit", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
