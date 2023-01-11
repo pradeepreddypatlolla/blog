@@ -50,5 +50,5 @@ app.use('/user',userRouter)
 app.listen(process.env.PORT,()=>{
     console.log("Server is running at "+process.env.PORT)
 })
-
+module.exports=app
 module.exports.handlers=serverless(app)
