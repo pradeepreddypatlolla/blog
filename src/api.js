@@ -43,7 +43,7 @@ app.get("/",(req,res)=>{
 
 app.use('/blog',blogRouter)
 app.use('/user',userRouter)
-app.use('/.netlify/functions/server', userRouter);  
+ 
 // app.get('/user/login',(req,res,next)=>{
 //     res.sendFile( path.join(__dirname,"views/login.html"))
 // })
